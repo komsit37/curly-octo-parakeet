@@ -1,0 +1,17 @@
+{
+  "property_type": "Apartment",
+  "accommodates": 3,
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "beds": 2,
+  "check_in": "4:00 PM",
+  "check_out": "12:00 PM (noon)",
+  "extra_people": "$15 / night after 2 guests",
+  "cleaning_fee": 29,
+  "extra_guest_after": 2,
+  "extra_guest_fee": 15,
+  "weekly_price": 501,
+  "monthly_price": "$2003 /month",
+  "cancellation": "Strict",
+  "min_stay": 2
+}
