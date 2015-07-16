@@ -37,5 +37,6 @@
   "rating_cleanliness": 5,
   "rating_location": 5,
   "rating_check_in": 4.5,
-  "rating_value": 4.5
+  "rating_value": 4.5,
+  "timestamp": "dummy"
 }

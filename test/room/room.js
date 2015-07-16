@@ -24,7 +24,9 @@ describe("Room:parser", function () {
         it('should success', function () {
             var raw_html = fs.readFileSync('./test/room/test_case/01_success_raw.html', 'utf8');
             var result_json = JSON.parse(fs.readFileSync('./test/room/test_case/01_success_result.json', 'utf8'));
-            room.process(raw_html).should.be.like(result_json);
+            var json = room.process(raw_html);
+            json.timestamp = "dummy";
+            json.should.be.like(result_json);
         });
         it('should return null if id not listed', function () {
             var raw_html = fs.readFileSync('./test/room/test_case/02_room_not_listed.html', 'utf8');
@@ -37,6 +39,7 @@ describe("Room:parser", function () {
             var raw_html = fs.readFileSync('./test/room/test_case/01_success_raw.html', 'utf8');
             var result_json = JSON.parse(fs.readFileSync('./test/room/test_case/01_success_result_geo.json', 'utf8'));
             room.processEnrich(raw_html).then(function (json) {
+                json.timestamp = "dummy"; //since we can't compare this
                 json.should.be.like(result_json);
                 done();
             })
@@ -45,6 +48,7 @@ describe("Room:parser", function () {
             var raw_html = fs.readFileSync('./test/room/test_case/01_success_raw.html', 'utf8');
             var result_json = JSON.parse(fs.readFileSync('./test/room/test_case/01_success_result_geo.json', 'utf8'));
             room.processEnrich(raw_html, function (err, json) {
+                json.timestamp = "dummy"; //since we can't compare this
                 should.not.exist(err);
                 json.should.be.like(result_json);
                 done();

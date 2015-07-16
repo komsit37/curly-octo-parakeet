@@ -38,5 +38,6 @@
   "rating_location": 5,
   "rating_check_in": 4.5,
   "rating_value": 4.5,
-  "use_geo": true
+  "use_geo": true,
+  "timestamp": "dummy"
 }
