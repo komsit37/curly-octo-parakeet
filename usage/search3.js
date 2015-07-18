@@ -3,8 +3,8 @@ var bnb = require('./../lib/search');
 
 //can be called in 2 flavours
 //1. promise
-bnb.search('Tokyo-Station--Tokyo--Japan', 100).then(function(result){
-   logger.info(result.ids);
+bnb.search('Tokyo-Station--Tokyo--Japan', 7).then(function(result){
+   logger.info(result);
 });
 
 //2. callback
