@@ -8,7 +8,7 @@ describe('general API of bnb-lib', function () {
     it('search', function (done) {
         bnb.search('Tokyo-Station--Tokyo--Japan', 7).then(function (result) {
             console.log(JSON.stringify(result));
-            result.s.should.equals('Tokyo-Station--Tokyo--Japan');
+            result.term.should.equals('Tokyo-Station--Tokyo--Japan');
             result.guests.should.equals(7);
             result.ids.should.have.length.above(0);
             result.ids[0].should.match(/^\d+$/);
@@ -34,6 +34,18 @@ describe('general API of bnb-lib', function () {
         var raw_html = fs.readFileSync('./test/room/test_case/01_success_raw.html', 'utf8');
         var result_json = JSON.parse(fs.readFileSync('./test/room/test_case/01_success_result.json', 'utf8'));
         var $ = cheerio.load(raw_html);
-        bnb.parseRoom($).should.be.like(result_json);
+        var res = bnb.parseRoom($)
+        res.timestamp = 'dummy';
+        res.should.be.like(result_json);
+    });
+
+    it('getCalendar', function (done) {
+        var id = '3266217';
+        bnb.getCalendar(id).then(function (cal) {
+            cal.id.should.equals(id);
+            cal.should.have.property('calendar_months');
+            cal.calendar_months.should.be.instanceof(Array);
+            done();
+        });
     });
 });
