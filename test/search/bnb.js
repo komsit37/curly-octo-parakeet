@@ -1,5 +1,5 @@
 var should = require('../test-lib/chai-should');
-var request = require('../../lib/request');
+var request = require('../test-lib/request');
 var utils = require('../../lib/utils');
 var cheerio = require('cheerio');
 

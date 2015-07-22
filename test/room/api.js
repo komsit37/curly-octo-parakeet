@@ -1,6 +1,6 @@
 var should = require('../test-lib/chai-should');
 
-var request = require('../../lib/request');
+var request = require('../test-lib/request');
 var room = require('../../lib/room');
 
 describe('Room API', function () {

@@ -1,5 +1,5 @@
 var room = require('./../../lib/room');
-var request = require('./../../lib/request');
+var request = require('./../../test/test-lib/request');
 var logger = require('./../../lib/logger');
 
 request('https://www.airbnb.com/rooms/3160954') //ok
