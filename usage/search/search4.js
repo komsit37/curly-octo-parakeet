@@ -1,5 +1,5 @@
-var logger = require('../lib/logger');
-var bnb = require('./../lib/search');
+var logger = require('../../lib/logger');
+var bnb = require('./../../lib/search');
 
 //can be called in 2 flavours
 //1. promise

@@ -1,5 +1,5 @@
 var rp = require('request-promise');
-var utils = require('../lib/utils');
+var utils = require('../../lib/utils');
 var u = require('underscore');
 
 var BNB_API_KEY = 'd306zoyjsyarp7ifhu67rjxn52tv0t20';

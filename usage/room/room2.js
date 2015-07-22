@@ -1,6 +1,6 @@
 //var bnb = require('./../lib/bnb');
-var room = require('./../lib/room');
-var logger = require('./../lib/logger');
+var room = require('./../../lib/room');
+var logger = require('./../../lib/logger');
 
 //bnb.getRoom('x') //status error
 //bnb.getRoom('3266216') //null

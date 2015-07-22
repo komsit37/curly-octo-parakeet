@@ -1,4 +1,4 @@
-var logger = require('./../lib/logger');
+var logger = require('./../../lib/logger');
 var rp = require('request-promise');
 var cheerio = require('cheerio');
 

@@ -1,6 +1,6 @@
-var room = require('./../lib/room');
-var request = require('./../lib/request');
-var logger = require('./../lib/logger');
+var room = require('./../../lib/room');
+var request = require('./../../lib/request');
+var logger = require('./../../lib/logger');
 
 request('https://www.airbnb.com/rooms/3160954') //ok
 //request('https://www.airbnb.com/rooms/6128894') //2 reviews - no stars
