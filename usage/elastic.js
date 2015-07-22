@@ -5,7 +5,6 @@ var elasticsearch = require('elasticsearch');
 var moment = require('moment');
 var el = require('./../lib/elastic');
 
-ª
 var elastic = new elasticsearch.Client({
     host: 'http://ea812885cdbbe17ca1b59edfd75631d7.us-east-1.aws.found.io:9200',
     log: 'info'
