@@ -2,9 +2,8 @@ var should = require('../test-lib/chai-should');
 
 var fs = require('fs');
 var cheerio = require('cheerio');
-
 var room = require('../../lib/room');
-
+var u = require('underscore');
 
 describe("Room:parser", function () {
     describe('module', function () {
@@ -77,6 +76,25 @@ describe("Room:parser", function () {
         }
     );
 
+    describe('enrichLocation', function () {
+        it('normal case', function (done) {
+            var room_json = JSON.parse(fs.readFileSync('./test/room/test_case/01_success_result.json', 'utf8'));
+            room.enrichLocation(room_json)
+                .then(function (enriched_json) {
+                    u.pick(enriched_json, 'region', 'country', 'city', 'use_geo')
+                        .should.be.like(
+                        {
+                            region: 'Tokyo-to',
+                            country: 'Japan',
+                            city: 'Shibuya-ku',
+                            use_geo: true
+                        });
+                    done();
+                })
+        });
+
+    });
+
 
     describe('parse helper', function () {
         it('formatKey', function () {
@@ -92,7 +110,9 @@ describe("Room:parser", function () {
             room._formatKey('Security Deposit: ').should.equal('security_deposit');
             room._formatKey('Cancellation: ').should.equal('cancellation');
         });
-        it('countStars', function () {
+
+
+        it('countStars should be able to parse full star', function () {
             var el = cheerio('\
             <div class="foreground">\
                 <i class="icon icon-beach icon-star"></i>\
@@ -110,8 +130,10 @@ describe("Room:parser", function () {
             </div>'
             );
             room._countStars(el).should.equal(5);
+        });
 
-            el = cheerio('\
+        it('countStars should be able to parse star-half', function () {
+            var el = cheerio('\
             <div class="foreground">\
                 <i class="icon icon-beach icon-star"></i>\
                 <i class="icon icon-beach icon-star"></i>\
@@ -129,16 +151,38 @@ describe("Room:parser", function () {
             );
             room._countStars(el).should.equal(4.5);
         });
-        it('digits', function () {
+
+
+        it('digits normal case', function () {
             room._digits('Saved 46 times').should.equal(46);
+        });
+        it('digits should return 0 if no digits', function () {
             room._digits('No Reviews Yet').should.equal(0);
         });
-        it('extraPeople', function () {
+        it('digits should return 0 if undefined', function () {
+            room._digits(undefined).should.equal(0);
+        });
+
+        it('extraPeople should return 0, 0 if undefined', function () {
             room._readExtraPeople(undefined).should.be.like({extra_guest_fee: 0, extra_guest_after: 0});
             room._readExtraPeople('Extra people: $17 / night after the first guest').should.be.like({
                 extra_guest_fee: 17,
                 extra_guest_after: 1
             });
+            room._readExtraPeople('Extra people: $20 / night after 3 guests').should.be.like({
+                extra_guest_fee: 20,
+                extra_guest_after: 3
+            });
+        });
+
+        it('extraPeople should be able to parse -first guest- as 1', function () {
+            room._readExtraPeople('Extra people: $17 / night after the first guest').should.be.like({
+                extra_guest_fee: 17,
+                extra_guest_after: 1
+            });
+        });
+
+        it('extraPeople normal case', function () {
             room._readExtraPeople('Extra people: $20 / night after 3 guests').should.be.like({
                 extra_guest_fee: 20,
                 extra_guest_after: 3
