@@ -37,7 +37,7 @@ describe('Calendar:Process', function () {
 
     it('defaultOptions: all', function () {
         var opt = cal.defaultOptions({month: 4, year: 2014, count: 3});
-        var c = {month: 4, year: 2014, count: 3}
+        var c = {month: 4, year: 2014, count: 3};
         opt.should.be.like(c);
     });
 });

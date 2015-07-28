@@ -2,5 +2,7 @@
   "region": "Tokyo-to",
   "country": "Japan",
   "city": "Nakano-ku",
-  "rating": 0
+  "rating": 0,
+  "map_lat": 35.69848049160602,
+  "map_lng": 139.6736434868371
 }
