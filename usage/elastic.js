@@ -6,11 +6,19 @@ var moment = require('moment');
 var el = require('./../lib/elastic');
 
 var elastic = new elasticsearch.Client({
-    host: 'http://ea812885cdbbe17ca1b59edfd75631d7.us-east-1.aws.found.io:9200',
+    host: 'http://gabviz:gabviz@elastic.ypricing.com',
     log: 'info'
 });
 
 var d = moment.utc().format("YYYY.MM.DD");
+var INDEX = 'bnbtest-' + d;
+var TYPE = {
+    STATUS: 'status',
+    SEARCH: 'search',
+    ROOM: 'room',
+    CALENDAR: 'calendar'
+};
+
 var justLog = function (err, response) {
     if (err) logger.error(err);
     logger.info('indexed', response);
@@ -30,13 +38,13 @@ function isProcessed(id){
 
 function elLog(id, event, msg){
     var logObj = {id: id, timestamp: new Date(), event: event, message: msg};
-    elastic.index({index: 'bnb-' + d, type: 'status', body: logObj}, justLog);
+    elastic.index({index: INDEX, type: TYPE.STATUS, body: logObj}, justLog);
 }
-bnb.search('Harajuku-Station--Tokyo--Japan', 2).then(function (result) {
-    //todo: skip duplicated id
-    elastic.index({index: 'bnb-' + d, type: 'search', id: result.term + '-' + result.guests, body: result}, justLog);
-    result.ids.forEach(function (id, i) {
 
+bnb.search('Tokyo--Japan', 2).then(function (result) {
+
+    elastic.index({index: INDEX, type: TYPE.SEARCH, id: result.term + '-' + result.guests, body: result}, justLog);
+    result.ids.forEach(function (id, i) {
 
         if (isProcessed(id)){
             logger.warn(i, id, 'duplicated');
@@ -51,7 +59,7 @@ bnb.search('Harajuku-Station--Tokyo--Japan', 2).then(function (result) {
                 //todo: add keyword - guest - rank
                 var roomS = el.structurizeRoom(room);
                 //put into elasticsearch here
-                elastic.index({index: 'bnb-' + d, type: 'room', id: roomS.id, body: roomS}, justLog);
+                elastic.index({index: INDEX, type: TYPE.ROOM, id: roomS.id, body: roomS}, justLog);
                 elLog(id, 'room-complete', 'done');
             }).catch(function (err) {
                 logger.error('room', err);
@@ -61,7 +69,7 @@ bnb.search('Harajuku-Station--Tokyo--Japan', 2).then(function (result) {
             .then(function (cal) {
                 //logger.info(cal);
                 //put into elasticsearch here
-                elastic.index({index: 'bnb-' + d, type: 'calendar', id: cal.id, body: cal}, justLog);
+                elastic.index({index: INDEX, type: TYPE.CALENDAR, id: cal.id, body: cal}, justLog);
                 elLog(id, 'calendar-complete', 'done');
             }).catch(function (err) {
                 logger.error('calendar', err);
