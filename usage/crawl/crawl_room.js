@@ -11,7 +11,7 @@ if (USE_FILE_INPUT) {
     var json = JSON.parse(fs.readFileSync('../../test/search/sample_result_from_elastic.json', 'utf8'));
     process(json);
 } else {
-    client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: 'Tokyo'}).then(function (response) {
+    client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: 'Shinjuku-Station--Tokyo--Japan-1'}).then(function (response) {
         process(response._source);
     });
 }
@@ -54,6 +54,7 @@ function tryRoom(id) {
         .then(function (room) {
             //todo: index calendar properly
             //todo: limit request properly
+            //todo: optionally skip existing room in elastic
 
             //put into elasticsearch here
             client.index({index: E.INDEX, type: E.TYPE.ROOM, id: room.id, body: room});

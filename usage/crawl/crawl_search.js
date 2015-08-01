@@ -11,7 +11,7 @@ if (USE_FILE_INPUT) {
     var json = JSON.parse(fs.readFileSync('../../test/search/sample_result.json', 'utf8'));
     process(json);
 } else {
-    bnb.search('Tsukiji-Station--Tokyo--Japan', 1).then(function (result) {
+    bnb.search('Shinjuku-Station--Tokyo--Japan', 1).then(function (result) {
         process(result);
     });
 }
