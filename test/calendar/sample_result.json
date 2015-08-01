@@ -1,0 +1,1841 @@
+{
+  "timestamp": "2015-07-30T01:04:09.710Z",
+  "id": "3266217",
+  "metadata": {},
+  "calendar_months": [
+    {
+      "month": 1,
+      "year": 2015,
+      "name": "January",
+      "abbr_name": "Jan",
+      "day_names": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "days": [
+        {
+          "date": "2014-12-28",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:29964213"
+        },
+        {
+          "date": "2014-12-29",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:29964213"
+        },
+        {
+          "date": "2014-12-30",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:29964213"
+        },
+        {
+          "date": "2014-12-31",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:29964213"
+        },
+        {
+          "date": "2015-01-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:41489046"
+        },
+        {
+          "date": "2015-01-02",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:41489046"
+        },
+        {
+          "date": "2015-01-03",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-04",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47864277"
+        },
+        {
+          "date": "2015-01-05",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47864277"
+        },
+        {
+          "date": "2015-01-06",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-07",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-08",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47713750"
+        },
+        {
+          "date": "2015-01-09",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47713750"
+        },
+        {
+          "date": "2015-01-10",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-11",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-12",
+          "available": true,
+          "type": "available",
+          "subtype": "default",
+          "group_id": null
+        },
+        {
+          "date": "2015-01-13",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-14",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-15",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-01-16",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-01-17",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-01-18",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-01-19",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-01-20",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:37694522"
+        },
+        {
+          "date": "2015-01-21",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:37694522"
+        },
+        {
+          "date": "2015-01-22",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:37694522"
+        },
+        {
+          "date": "2015-01-23",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:50763360"
+        },
+        {
+          "date": "2015-01-24",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:50763360"
+        },
+        {
+          "date": "2015-01-25",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:50763360"
+        },
+        {
+          "date": "2015-01-26",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-27",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-28",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-29",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-01-30",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48830718"
+        },
+        {
+          "date": "2015-01-31",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48830718"
+        }
+      ]
+    },
+    {
+      "month": 2,
+      "year": 2015,
+      "name": "February",
+      "abbr_name": "Feb",
+      "day_names": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "days": [
+        {
+          "date": "2015-02-01",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-02-02",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-02-03",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:51483580"
+        },
+        {
+          "date": "2015-02-04",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:51483580"
+        },
+        {
+          "date": "2015-02-05",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:51483580"
+        },
+        {
+          "date": "2015-02-06",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:51483580"
+        },
+        {
+          "date": "2015-02-07",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47641018"
+        },
+        {
+          "date": "2015-02-08",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47641018"
+        },
+        {
+          "date": "2015-02-09",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47641018"
+        },
+        {
+          "date": "2015-02-10",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-02-11",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-02-12",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-02-13",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47741882"
+        },
+        {
+          "date": "2015-02-14",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47741882"
+        },
+        {
+          "date": "2015-02-15",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47741882"
+        },
+        {
+          "date": "2015-02-16",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47741882"
+        },
+        {
+          "date": "2015-02-17",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48148627"
+        },
+        {
+          "date": "2015-02-18",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48148627"
+        },
+        {
+          "date": "2015-02-19",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48148627"
+        },
+        {
+          "date": "2015-02-20",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48148627"
+        },
+        {
+          "date": "2015-02-21",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:50240471"
+        },
+        {
+          "date": "2015-02-22",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53430431"
+        },
+        {
+          "date": "2015-02-23",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53430431"
+        },
+        {
+          "date": "2015-02-24",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53430431"
+        },
+        {
+          "date": "2015-02-25",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53430431"
+        },
+        {
+          "date": "2015-02-26",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-02-27",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:54277600"
+        },
+        {
+          "date": "2015-02-28",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:54277600"
+        }
+      ]
+    },
+    {
+      "month": 3,
+      "year": 2015,
+      "name": "March",
+      "abbr_name": "Mar",
+      "day_names": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "days": [
+        {
+          "date": "2015-03-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:54277600"
+        },
+        {
+          "date": "2015-03-02",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:54277600"
+        },
+        {
+          "date": "2015-03-03",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:54277600"
+        },
+        {
+          "date": "2015-03-04",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-03-05",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48130002"
+        },
+        {
+          "date": "2015-03-06",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48130002"
+        },
+        {
+          "date": "2015-03-07",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:48130002"
+        },
+        {
+          "date": "2015-03-08",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-03-09",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-10",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-11",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-12",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-13",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-14",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:57957376"
+        },
+        {
+          "date": "2015-03-15",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:57957376"
+        },
+        {
+          "date": "2015-03-16",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-03-17",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-03-18",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-03-19",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53978024"
+        },
+        {
+          "date": "2015-03-20",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53978024"
+        },
+        {
+          "date": "2015-03-21",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53978024"
+        },
+        {
+          "date": "2015-03-22",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53978024"
+        },
+        {
+          "date": "2015-03-23",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-24",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-25",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-26",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-03-27",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53260927"
+        },
+        {
+          "date": "2015-03-28",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:53260927"
+        },
+        {
+          "date": "2015-03-29",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:57097608"
+        },
+        {
+          "date": "2015-03-30",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:57097608"
+        },
+        {
+          "date": "2015-03-31",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47256100"
+        },
+        {
+          "date": "2015-04-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47256100"
+        },
+        {
+          "date": "2015-04-02",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47256100"
+        },
+        {
+          "date": "2015-04-03",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47256100"
+        },
+        {
+          "date": "2015-04-04",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:56815356"
+        }
+      ]
+    },
+    {
+      "month": 4,
+      "year": 2015,
+      "name": "April",
+      "abbr_name": "Apr",
+      "day_names": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "days": [
+        {
+          "date": "2015-03-29",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:57097608"
+        },
+        {
+          "date": "2015-03-30",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:57097608"
+        },
+        {
+          "date": "2015-03-31",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47256100"
+        },
+        {
+          "date": "2015-04-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47256100"
+        },
+        {
+          "date": "2015-04-02",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47256100"
+        },
+        {
+          "date": "2015-04-03",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:47256100"
+        },
+        {
+          "date": "2015-04-04",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:56815356"
+        },
+        {
+          "date": "2015-04-05",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:49188637"
+        },
+        {
+          "date": "2015-04-06",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:49188637"
+        },
+        {
+          "date": "2015-04-07",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:49188637"
+        },
+        {
+          "date": "2015-04-08",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:49188637"
+        },
+        {
+          "date": "2015-04-09",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:49188637"
+        },
+        {
+          "date": "2015-04-10",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-04-11",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:46286714"
+        },
+        {
+          "date": "2015-04-12",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:46286714"
+        },
+        {
+          "date": "2015-04-13",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:46286714"
+        },
+        {
+          "date": "2015-04-14",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-15",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-16",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-17",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-18",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-19",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-20",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-21",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-22",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-23",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:43515687"
+        },
+        {
+          "date": "2015-04-24",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-04-25",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:59719152"
+        },
+        {
+          "date": "2015-04-26",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:59719152"
+        },
+        {
+          "date": "2015-04-27",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-04-28",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-04-29",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-04-30",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:64411267"
+        },
+        {
+          "date": "2015-05-02",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:60098929"
+        }
+      ]
+    },
+    {
+      "month": 5,
+      "year": 2015,
+      "name": "May",
+      "abbr_name": "May",
+      "day_names": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "days": [
+        {
+          "date": "2015-04-26",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:59719152"
+        },
+        {
+          "date": "2015-04-27",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-04-28",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-04-29",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-04-30",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:64411267"
+        },
+        {
+          "date": "2015-05-02",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:60098929"
+        },
+        {
+          "date": "2015-05-03",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:60098929"
+        },
+        {
+          "date": "2015-05-04",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:60098929"
+        },
+        {
+          "date": "2015-05-05",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:60098929"
+        },
+        {
+          "date": "2015-05-06",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:60098929"
+        },
+        {
+          "date": "2015-05-07",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:60098929"
+        },
+        {
+          "date": "2015-05-08",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-09",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-10",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-11",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-12",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:69020124"
+        },
+        {
+          "date": "2015-05-13",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:69020124"
+        },
+        {
+          "date": "2015-05-14",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:59058258"
+        },
+        {
+          "date": "2015-05-15",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:59058258"
+        },
+        {
+          "date": "2015-05-16",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:59058258"
+        },
+        {
+          "date": "2015-05-17",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:67551499"
+        },
+        {
+          "date": "2015-05-18",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:67551499"
+        },
+        {
+          "date": "2015-05-19",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:67551499"
+        },
+        {
+          "date": "2015-05-20",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-21",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-22",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:65816743"
+        },
+        {
+          "date": "2015-05-23",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:65816743"
+        },
+        {
+          "date": "2015-05-24",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:65816743"
+        },
+        {
+          "date": "2015-05-25",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:65816743"
+        },
+        {
+          "date": "2015-05-26",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-05-27",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-05-28",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-05-29",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-05-30",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-05-31",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-06-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-06-02",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-06-03",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-04",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-05",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:68134808"
+        },
+        {
+          "date": "2015-06-06",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:68134808"
+        }
+      ]
+    },
+    {
+      "month": 6,
+      "year": 2015,
+      "name": "June",
+      "abbr_name": "Jun",
+      "day_names": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "days": [
+        {
+          "date": "2015-05-31",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-06-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-06-02",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66770566"
+        },
+        {
+          "date": "2015-06-03",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-04",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-05",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:68134808"
+        },
+        {
+          "date": "2015-06-06",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:68134808"
+        },
+        {
+          "date": "2015-06-07",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-08",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-09",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-10",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-11",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74756585"
+        },
+        {
+          "date": "2015-06-12",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74756585"
+        },
+        {
+          "date": "2015-06-13",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74756585"
+        },
+        {
+          "date": "2015-06-14",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:71781437"
+        },
+        {
+          "date": "2015-06-15",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:71781437"
+        },
+        {
+          "date": "2015-06-16",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:71781437"
+        },
+        {
+          "date": "2015-06-17",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:71781437"
+        },
+        {
+          "date": "2015-06-18",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-19",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74245073"
+        },
+        {
+          "date": "2015-06-20",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74245073"
+        },
+        {
+          "date": "2015-06-21",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-22",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-23",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-24",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66566482"
+        },
+        {
+          "date": "2015-06-25",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66566482"
+        },
+        {
+          "date": "2015-06-26",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66566482"
+        },
+        {
+          "date": "2015-06-27",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66566482"
+        },
+        {
+          "date": "2015-06-28",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66566482"
+        },
+        {
+          "date": "2015-06-29",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-30",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-01",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-02",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-03",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74772578"
+        },
+        {
+          "date": "2015-07-04",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74772578"
+        }
+      ]
+    },
+    {
+      "month": 7,
+      "year": 2015,
+      "name": "July",
+      "abbr_name": "Jul",
+      "day_names": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "days": [
+        {
+          "date": "2015-06-28",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:66566482"
+        },
+        {
+          "date": "2015-06-29",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-06-30",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-01",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-02",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-03",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74772578"
+        },
+        {
+          "date": "2015-07-04",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74772578"
+        },
+        {
+          "date": "2015-07-05",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:74772578"
+        },
+        {
+          "date": "2015-07-06",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-07",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:81479386"
+        },
+        {
+          "date": "2015-07-08",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:81479386"
+        },
+        {
+          "date": "2015-07-09",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:81479386"
+        },
+        {
+          "date": "2015-07-10",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:81479386"
+        },
+        {
+          "date": "2015-07-11",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:81479386"
+        },
+        {
+          "date": "2015-07-12",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-07-13",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-07-14",
+          "available": false,
+          "type": "busy",
+          "subtype": "host_busy",
+          "group_id": "busy"
+        },
+        {
+          "date": "2015-07-15",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-16",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:79412974"
+        },
+        {
+          "date": "2015-07-17",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:79412974"
+        },
+        {
+          "date": "2015-07-18",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-19",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:77413862"
+        },
+        {
+          "date": "2015-07-20",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:77413862"
+        },
+        {
+          "date": "2015-07-21",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-22",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-23",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-24",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:87207164"
+        },
+        {
+          "date": "2015-07-25",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:87207164"
+        },
+        {
+          "date": "2015-07-26",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:87207164"
+        },
+        {
+          "date": "2015-07-27",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:87207164"
+        },
+        {
+          "date": "2015-07-28",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-29",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-30",
+          "available": true,
+          "type": "available",
+          "subtype": null,
+          "group_id": null
+        },
+        {
+          "date": "2015-07-31",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:34403276"
+        },
+        {
+          "date": "2015-08-01",
+          "available": false,
+          "type": "reservation",
+          "subtype": null,
+          "group_id": "reservation:34403276"
+        }
+      ]
+    }
+  ]
+}
