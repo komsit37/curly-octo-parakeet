@@ -92,9 +92,7 @@ describe("Room:parser", function () {
                     done();
                 })
         });
-
     });
-
 
     describe('parse helper', function () {
         it('formatKey', function () {

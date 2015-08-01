@@ -36,4 +36,13 @@ describe('Room Request', function () {
                 done();
             })
     });
+
+    it('structurize ok', function (done) {
+        room.getRoom('3266217', {strucurize: true})//this room id does not exist, returning search page
+            .then(function (json) {
+                should.exist(json);
+                console.log(json);
+                done();
+            })
+    });
 });
