@@ -1,0 +1,64 @@
+{
+  "timestamp": "dummy",
+  "id": "3266217",
+  "name": "Prime 1BR Terrace @Harajuku",
+  "host": {
+    "id": "16320275",
+    "name": "Kan Gab Bob",
+    "response": {
+      "rate": 100,
+      "time": "within a few hours"
+    }
+  },
+  "prop": {
+    "type": "Apartment",
+    "scope": "entireplace",
+    "accommodates": 5,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "img": "https://a1.muscache.com/ac/pictures/53577159/12716e88_original.jpg?interpolation=lanczos-none&size=large&output-format=jpg&output-quality=70"
+  },
+  "location": {
+    "city": "Shibuya-ku",
+    "region": "Tokyo-to",
+    "country": "Japan",
+    "address": "1 Chome Jingumae, Shibuya (Harajuku)",
+    "geo": {
+      "lat": 35.67007625833921,
+      "lon": 139.70536302960696
+    }
+  },
+  "price": {
+    "default": 251,
+    "currency": "USD"
+  },
+  "extra": {
+    "cleaning": 42,
+    "security": 84,
+    "guest": {
+      "fee": 17,
+      "after": 2
+    }
+  },
+  "restrict": {
+    "checkin": "4:00 PM",
+    "checkout": "12:00 PM (noon)",
+    "minstay": 2
+  },
+  "stat": {
+    "wishlist": 258,
+    "reviews": 39,
+    "rating": {
+      "accuracy": 5,
+      "communication": 5,
+      "cleanliness": 5,
+      "location": 5,
+      "check_in": 4.5,
+      "value": 4.5,
+      "overall": 4.5
+    }
+  },
+  "enrich": {
+    "geo": true
+  }
+}

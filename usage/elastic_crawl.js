@@ -3,7 +3,6 @@ var bnb = require('./../lib/bnb');
 var request = require('request-promise');
 var elasticsearch = require('elasticsearch');
 var moment = require('moment');
-
 var elastic = new elasticsearch.Client({
     host: 'http://gabviz:gabviz@elastic.ypricing.com',
     log: 'info'
@@ -20,7 +19,7 @@ var TYPE = {
 
 var justLog = function (err, response) {
     if (err) logger.error(err);
-    logger.info('indexed', response);
+    logger.debug('indexed', response);
 };
 
 function elLog(id, type, event, msg, time) {
@@ -28,10 +27,15 @@ function elLog(id, type, event, msg, time) {
     elastic.index({index: INDEX, type: TYPE.STATUS, id: id, body: logObj});
 }
 
-bnb.search('Tokyo--Japan', 2).then(function (result) {
 
-    elastic.index({index: INDEX, type: TYPE.SEARCH, id: result.term + '-' + result.guests, body: result}, justLog);
-    result.ids.forEach(function (id, i) {
+elastic.get({
+    index: 'bnbtest-2015.07.30',
+    type: 'search',
+    id: 'Tokyo--Japan-2'
+}, function (error, response) {
+    //console.log(response);
+    var ids = response._source.ids;
+    ids.forEach(function (id, i) {
         tryRoom(id, i);
     })
 });
@@ -57,10 +61,12 @@ function tryRoom(id, i) {
             //todo: add keyword - guest - rank
             //todo: index calendar properly
             //todo: limit request properly
+
             stats[id].elapsedTime = new Date() - stats[id].startTime;
             //put into elasticsearch here
             elastic.index({index: INDEX, type: TYPE.ROOM, id: room.id, body: room}, justLog);
             elLog(id, 'room', 'complete', 'done', stats[id].elapsedTime);
+            logger.info(i, 'processed ', id);
         }).catch(function (err) {
             stats[id].elapsedTime = new Date() - stats[id].startTime;
             logger.error('room', err);

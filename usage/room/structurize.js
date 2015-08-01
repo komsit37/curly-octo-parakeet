@@ -1,16 +1,15 @@
 //var bnb = require('./../lib/bnb');
-var room = require('./../lib/room');
-var elastic = require('./../lib/elastic');
-var logger = require('./../lib/logger');
+var room = require('./../../lib/room');
+var logger = require('./../../lib/logger');
 var u = require('underscore');
 
 //bnb.getRoom('x') //status error
 //bnb.getRoom('3266216') //null
 //room.getRoom('3266217') //ok
-room.getRoom('7335974') //ok
+room.getRoom('7335974', {structurize: true}) //ok
     .then(function (i) {
-        var o = elastic.structurizeRoom(i);
-        console.log(o);
+        //var o = elastic.structurizeRoom(i);
+        //console.log(o);
         console.log(i);
     })
     .catch(function (error) {

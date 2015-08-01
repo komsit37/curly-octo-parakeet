@@ -1,0 +1,83 @@
+//just a backup index related command in sense
+
+GET bnb*/room,search,calendar/_mapping
+GET bnb*/room/_mapping
+GET bnb*/_search
+DELETE bnb*
+
+GET bnbtest-2015.07.29/room,search,calendar/_mapping
+GET bnbtest-2015.07.29/calendar/_mapping
+
+GET /_template/logstash
+
+GET /_template/bnb-room
+DELETE /_template/bnb-room
+PUT /_template/bnb-room
+{
+    "template" : "bnb*",
+    "settings" : {
+    "number_of_shards" : 1
+},
+    "mappings" : {
+    "room" : {
+        "dynamic_templates" : [
+            {
+                "template" : {
+                    "match" : "*",
+                    "match_mapping_type" : "string",
+                    "mapping" : {
+                        "type" : "string",
+                        "index" : "not_analyzed",
+                        "doc_values": true
+                    }
+                }
+            }
+        ],
+            "properties" : {
+            "location": {
+                "properties": {
+                    "geo": {
+                        "type": "geo_point"
+                    }
+                }
+            }
+        }
+    }
+}
+}
+
+GET /_template/bnb-calendar
+PUT /_template/bnb-calendar
+{
+    "template" : "bnb*",
+    "settings" : {
+    "number_of_shards" : 1
+},
+    "mappings": {
+    "calendar": {
+        "dynamic_templates" : [
+            {
+                "template" : {
+                    "match" : "*",
+                    "match_mapping_type" : "string",
+                    "mapping" : {
+                        "type" : "string",
+                        "index" : "not_analyzed"
+                        "doc_values": true
+                    }
+                }
+            }
+        ],
+            "properties": {
+            "calendar_months": {
+                "type": "nested",
+                    "properties": {
+                    "days": {
+                        "type": "nested"
+                    }
+                }
+            }
+        }
+    }
+}
+}

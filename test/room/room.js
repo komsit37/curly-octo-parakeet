@@ -186,5 +186,13 @@ describe("Room:parser", function () {
                 extra_guest_after: 3
             });
         });
+
+        it('structurize', function(){
+            var flat = JSON.parse(fs.readFileSync('./test/room/test_case/01_success_result_geo.json', 'utf8'));
+            var structure = room.structurizeRoom(flat);
+            var roomStruc = JSON.parse(fs.readFileSync('./test/room/test_case/01_success_result_structured.json', 'utf8'));
+            structure.should.be.like(roomStruc);
+        })
     });
+
 });
