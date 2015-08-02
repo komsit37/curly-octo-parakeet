@@ -11,8 +11,12 @@ if (USE_FILE_INPUT) {
     var json = JSON.parse(fs.readFileSync('../../test/search/sample_result.json', 'utf8'));
     process(json);
 } else {
-    bnb.search('Shinjuku-Station--Tokyo--Japan', 1).then(function (result) {
-        process(result);
+    bnb.searchAll('Tokyo--Japan').then(function (result) {
+        if (result instanceof Array){
+            result.forEach(process);
+        } else {
+            process(result);
+        }
     });
 }
 
@@ -22,7 +26,7 @@ function process(result) {
 
     index_ranking(result);
     index_search(result);
-    index_ids(result);
+    index_combined_search(result);
 }
 
 function index_ranking(result){
@@ -54,7 +58,7 @@ function index_search(result){
     client.index({index: E.INDEX, type: E.TYPE.SEARCH, id: search_id, body: result}, logger.debug);
 }
 
-function index_ids(result){
+function index_combined_search(result){
     var type = E.TYPE.SEARCH;
     var id = getSecondLastItemFromSearchTerm(result.term);
     var body;
@@ -72,7 +76,9 @@ function index_ids(result){
                 });
                 body = {
                     timestamp: result.timestamp,
-                    ids: combined_ids
+                    id: id,
+                    ids: combined_ids,
+                    ids_length: combined_ids.length
                 };
                 client.update({index: E.INDEX, type: type, id: id, body: {doc: body}}, logger.debug);
             });
@@ -81,9 +87,10 @@ function index_ids(result){
             //create new doc
             body = {
                 timestamp: result.timestamp,
-                term: id,
+                id: id,
                 guests: 0,
-                ids: result.ids
+                ids: result.ids,
+                ids_length: result.ids.length
             };
             client.index({index: E.INDEX, type: type, id: id, body: body}, logger.debug);
         }

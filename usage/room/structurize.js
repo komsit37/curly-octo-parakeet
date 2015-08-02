@@ -6,7 +6,7 @@ var u = require('underscore');
 //bnb.getRoom('x') //status error
 //bnb.getRoom('3266216') //null
 //room.getRoom('3266217') //ok
-room.getRoom('7335974', {structurize: true}) //ok
+room.getRoom('666830', {structurize: true}) //ok
     .then(function (i) {
         //var o = elastic.structurizeRoom(i);
         //console.log(o);
