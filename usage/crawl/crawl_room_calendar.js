@@ -21,7 +21,7 @@ if (USE_FILE_INPUT) {
 
 var queue = {
     start: new Date(),
-    type: E.TYPE.ROOM,
+    type: E.TYPE.CALENDAR,
     queued: 0,
     requesting: 0,
     completed: 0,
@@ -39,8 +39,8 @@ function processIds(result) {
 
     var ids = result.ids;
     ids.forEach(function (id, i) {
-        //if (i < 10) return;   //to skip some rooms
-        client.exists({index: E.INDEX, type: E.TYPE.ROOM, id: id}).then(function (exists) {
+
+        client.exists({index: E.INDEX, type: E.TYPE.CALENDAR, id: id}).then(function (exists) {
             info[id] = {
                 no: i,
                 type: E.TYPE.CALENDAR,
@@ -49,11 +49,12 @@ function processIds(result) {
             };
 
             if (!exists) {
+                //if (queue.all_queued > 10) return;   //for quick test
                 logProgress(id, E.STATUS.QUEUED, '');
                 q.enqueue(id);
                 //tryRoom(id);
-            } else{
-                //logProgress(id, E.STATUS.COMPLETED, 'already existed');
+            } else {
+                //logProgress(id, E.STATUS.COMPLETED, 'already existed');   //skip logging completed
             }
         })
     })
@@ -102,15 +103,51 @@ function tryRoom(id) {
             }
 
         });
+
+    setTimeout(function() {
+        bnb.getCalendar(id)
+            .then(function (cal) {
+                //todo: index calendar properly
+                //todo: limit request properly
+
+                //put into elasticsearch here
+                client.index({index: E.INDEX, type: E.TYPE.CALENDAR, id: cal.id, body: cal});
+                logProgress(id, E.STATUS.COMPLETED, '');
+            }).catch(function (err) {
+                logProgress(id, E.STATUS.ERROR, err.message);
+
+                logger.debug('queue error count', queue.error);
+                if (queue.error > 1) {
+                    logger.warn('got error, slow down for a while');
+                    q.changeInterval(q.backoff + 2);
+                    setTimeout(function () {
+                        q.changeInterval(1);
+                        //tryRoom(id);
+                    }, 60000)
+                }
+
+                if (queue.error > 3) {
+                    logger.error('too many consecutive errors. maybe got blocked from airbnb. exiting...');
+                    q.stop();
+                    logResult('incompleted');
+                    process.exit(1);
+                }
+
+                if (info[id].retry < 3) {
+                    logProgress(id, E.STATUS.RETRYING);
+                    q.enqueue(id);
+                    //tryRoom(id);
+                }
+            });
+    }, 1000);
 }
 
-
-function logProgress(id, status, msg){
+function logProgress(id, status, msg) {
     var d = info[id];
     d.status = status;
     if (msg)
         d.message = msg;
-    if (d.status === E.STATUS.RETRYING){
+    if (d.status === E.STATUS.RETRYING) {
         d.retry += 1;
     }
     delete d.timestamp; //no need to log timestamp
@@ -123,7 +160,7 @@ function logProgress(id, status, msg){
     client.index({index: E.INDEX, type: E.TYPE.STATUS, id: d.type + '-' + d.id, body: d});
 
     //update queue
-    switch (d.status){
+    switch (d.status) {
         case E.STATUS.QUEUED:
             queue.queued++;
             queue.all_queued++;
@@ -145,7 +182,7 @@ function logProgress(id, status, msg){
     }
     logger.debug(queue.queued + ' jobs left');
 
-    if (queue.queued === 0){
+    if (queue.queued === 0) {
         logResult('completed');
     }
 }

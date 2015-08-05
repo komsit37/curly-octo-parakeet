@@ -1,5 +1,6 @@
 var should = require('../test-lib/chai-should');
 var utils = require('../../lib/utils');
+var ro = require('../../lib/request-options');
 
 describe('Utils', function () {
     it('convert_accented_characters', function () {
@@ -8,12 +9,12 @@ describe('Utils', function () {
     });
 
     it('balance bnb url', function () {
-        var urls = utils.BNB_URL;
+        var urls = ro.BNB_URL;
         urls.forEach(function(url){
-            utils.getBnbUrl().should.equals(url);
+            ro.getBnbUrl().should.equals(url);
         });
         urls.forEach(function(url){
-            utils.getBnbUrl().should.equals(url);
+            ro.getBnbUrl().should.equals(url);
         });
     });
 });

@@ -4,10 +4,11 @@ var logger = require('./../../lib/logger');
 
 //bnb.getRoom('x') //status error
 //bnb.getRoom('3266216') //null
-//room.getRoom('3266217') //ok
-room.getRoom('4817291') //ok
+room.getRoom('3266217', {structurize: true}) //ok
+//room.getRoom('4817291') //ok
     .then(function (json) {
         logger.debug('callback', json);
+        console.log(JSON.stringify(json));
     })
     .catch(function (error) {
         logger.error(error.stack);

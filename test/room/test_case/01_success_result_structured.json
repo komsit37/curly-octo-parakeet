@@ -6,8 +6,8 @@
     "id": "16320275",
     "name": "Kan Gab Bob",
     "response": {
-      "rate": 100,
-      "time": "within a few hours"
+      "rate": 97,
+      "time": "within an hour"
     }
   },
   "prop": {
@@ -16,7 +16,7 @@
     "accommodates": 5,
     "bedrooms": 1,
     "bathrooms": 1,
-    "img": "https://a1.muscache.com/ac/pictures/53577159/12716e88_original.jpg?interpolation=lanczos-none&size=large&output-format=jpg&output-quality=70"
+    "img": "https://a1.muscache.com/im/pictures/53577159/12716e88_original.jpg?aki_policy=large"
   },
   "location": {
     "city": "Shibuya-ku",
@@ -29,14 +29,14 @@
     }
   },
   "price": {
-    "default": 251,
+    "default": 249,
     "currency": "USD"
   },
   "extra": {
-    "cleaning": 42,
-    "security": 84,
+    "cleaning": 50,
+    "security": 83,
     "guest": {
-      "fee": 17,
+      "fee": 12,
       "after": 2
     }
   },
@@ -46,8 +46,8 @@
     "minstay": 2
   },
   "stat": {
-    "wishlist": 258,
-    "reviews": 39,
+    "wishlist": 285,
+    "reviews": 45,
     "rating": {
       "accuracy": 5,
       "communication": 5,
@@ -55,7 +55,7 @@
       "location": 5,
       "check_in": 4.5,
       "value": 4.5,
-      "overall": 4.5
+      "overall": 5
     }
   },
   "enrich": {

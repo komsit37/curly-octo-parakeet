@@ -1,5 +1,6 @@
 var should = require('../test-lib/chai-should');
 var cal = require('../../lib/calendar');
+var ro = require('../../lib/request-options');
 var u = require('underscore');
 
 describe('Calendar:Process', function () {
@@ -7,7 +8,7 @@ describe('Calendar:Process', function () {
     var def = {
         month: d.getMonth() + 1,
         year: d.getFullYear(),
-        count: cal.DEFAULT_COUNT
+        count: ro.DEFAULT_CALENDAR_COUNT
     };
     it('defaultOptions: no options', function () {
         var opt = cal.defaultOptions();

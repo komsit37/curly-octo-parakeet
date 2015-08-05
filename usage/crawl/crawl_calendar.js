@@ -118,7 +118,7 @@ function logProgress(id, status, msg) {
         logger.info(d);
 
     d.timestamp = new Date();   //elasticsearch need timestamp
-    client.index({index: E.INDEX, type: E.TYPE.STATUS, id: d.id, body: d});
+    client.index({index: E.INDEX, type: E.TYPE.STATUS, id: d.type + '-' + d.id, body: d});
 
     //update queue
     switch (d.status) {

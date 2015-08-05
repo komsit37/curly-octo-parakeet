@@ -1,13 +1,13 @@
 var should = require('../test-lib/chai-should');
 var request = require('../test-lib/request');
-var utils = require('../../lib/utils');
+var ro = require('../../lib/request-options');
 var cheerio = require('cheerio');
 
 describe('Bnb Search web API Check', function () {
     it('single page result', function (done) {
         request({
             uri: 'https://www.airbnb.com/s/Tokyo-Station--Tokyo--Japan?guests=10',
-            headers: {'User-Agent': utils.USER_AGENT}
+            headers: {'User-Agent': ro.getUserAgent()}
         }, function (error, response, body) {
             should.not.exist(error);
             should.exist(body);
@@ -33,7 +33,7 @@ describe('Bnb Search web API Check', function () {
     it('multi page result', function (done) {
         request({
             uri: 'https://www.airbnb.com/s/Tokyo-Station--Tokyo--Japan?guests=6',
-            headers: {'User-Agent': utils.USER_AGENT}
+            headers: {'User-Agent': ro.getUserAgent()}
         }, function (error, response, body) {
             should.not.exist(error);
             should.exist(body);

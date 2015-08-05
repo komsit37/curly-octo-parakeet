@@ -5,22 +5,47 @@ var bnb = require('../../lib/bnb');
 var client = require('../../lib/elasticsearch');
 var E = require('../../lib/elastic-bnb');
 
+var Promise = require('bluebird');
+
 var USE_FILE_INPUT = false;
 if (USE_FILE_INPUT) {
     var fs = require('fs');
     var json = JSON.parse(fs.readFileSync('../../test/search/sample_result.json', 'utf8'));
     process(json);
 } else {
-    bnb.searchAll('Tokyo--Japan').then(function (result) {
-        if (result instanceof Array){
-            result.forEach(process);
-        } else {
-            process(result);
-        }
-    });
+    var keywords = [];
+    keywords.push('Tokyo--Japan');
+    keywords.push('Tokyo-Station--Tokyo--Japan');
+    keywords.push('Shinjuku-Station--Tokyo--Japan');
+    keywords.push('Ginza-Station--Tokyo--Japan');
+    keywords.push('Tsukiji-Station--Tokyo--Japan');
+    keywords.push('Shibuya-Station--Tokyo--Japan');
+    keywords.push('Roppongi-Station--Tokyo--Japan');
+    keywords.push('Asakusa-Station--Tokyo--Japan');
+    keywords.push('Ikebukuro-Station--Tokyo--Japan');
+    keywords.push('Shinagawa-Station--Tokyo--Japan');
+
+    //to execute promise search in sequential
+    keywords.reduce(function (cur, next) {
+        return cur.then(function () {
+            return bnb.searchAll(next).then(process);
+        });
+    }, Promise.resolve());
+
+    //bnb.searchAll('Tokyo--Japan').then(function (result) {
+    //    process(result);
+    //});
 }
 
 function process(result) {
+    if (result instanceof Array) {
+        result.forEach(_process);
+    } else {
+        _process(result);
+    }
+}
+
+function _process(result) {
     //logger.info(result);
     //console.log(JSON.stringify(result));
 
@@ -29,7 +54,7 @@ function process(result) {
     index_combined_search(result);
 }
 
-function index_ranking(result){
+function index_ranking(result) {
     var type = E.TYPE.RANKING;
     //index ranking in a separate document
     var ranking = result.ranking;
@@ -52,52 +77,52 @@ function index_ranking(result){
     });
 }
 
-function index_search(result){
+function index_search(result) {
     delete result.ranking;
     var search_id = result.term + '-' + result.guests;
     client.index({index: E.INDEX, type: E.TYPE.SEARCH, id: search_id, body: result}, logger.debug);
 }
 
-function index_combined_search(result){
+function index_combined_search(result) {
     var type = E.TYPE.SEARCH;
-    var id = getSecondLastItemFromSearchTerm(result.term);
+    var combinedTerm = getSecondLastItemFromSearchTerm(result.term);
     var body;
 
     //need to check if exist first or elasticsearch will error if update is called without existing document
-    client.exists({index: E.INDEX, type: type, id: id}).then(function (exists) {
+    client.exists({index: E.INDEX, type: type, id: combinedTerm}).then(function (exists) {
         if (exists === true) {
             //update existing doc
-            client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: id}).then(function(response){
+            client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: combinedTerm}).then(function (response) {
                 var combined_ids = response._source.ids;
-                result.ids.forEach(function(item){
-                   if (combined_ids.indexOf(item) < 0){
-                       combined_ids.push(item);  //only add if not exist
-                   }
+                result.ids.forEach(function (item) {
+                    if (combined_ids.indexOf(item) < 0) {
+                        combined_ids.push(item);  //only add if not exist
+                    }
                 });
                 body = {
                     timestamp: result.timestamp,
-                    id: id,
                     ids: combined_ids,
                     ids_length: combined_ids.length
                 };
-                client.update({index: E.INDEX, type: type, id: id, body: {doc: body}}, logger.debug);
+                client.update({index: E.INDEX, type: type, id: combinedTerm, body: {doc: body}}, logger.debug);
             });
 
         } else {
             //create new doc
             body = {
                 timestamp: result.timestamp,
-                id: id,
+                id: combinedTerm,
+                term: combinedTerm,
                 guests: 0,
                 ids: result.ids,
                 ids_length: result.ids.length
             };
-            client.index({index: E.INDEX, type: type, id: id, body: body}, logger.debug);
+            client.index({index: E.INDEX, type: type, id: combinedTerm, body: body}, logger.debug);
         }
     });
 }
 
-function getSecondLastItemFromSearchTerm(terms){
+function getSecondLastItemFromSearchTerm(terms) {
     var ss = terms.split('--');
     return ss[Math.max(ss.length - 2, 0)]; //get second from last
 }

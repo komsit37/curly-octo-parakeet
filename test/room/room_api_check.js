@@ -1,6 +1,6 @@
 var should = require('../test-lib/chai-should');
 var request = require('../test-lib/request');
-var utils = require('../../lib/utils');
+var ro = require('../../lib/request-options');
 var cheerio = require('cheerio');
 
 var room = require('../../lib/room');
@@ -10,7 +10,7 @@ describe('Bnb Room web API Check', function () {
     it('as expected', function (done) {
         request({
             uri: 'https://www.airbnb.com/rooms/3266217',
-            headers: {'User-Agent': utils.USER_AGENT}
+            headers: {'User-Agent': ro.getUserAgent()}
         }, function (error, response, body) {
             should.not.exist(error);
             response.statusCode.should.equals(200);
@@ -54,7 +54,7 @@ describe('Bnb Room web API Check', function () {
                 rent_type: 'entireplace' });
 
             //pricing
-            e = $('#pricing');
+            e = $('.book-it__price');
             e.should.have.length.at.least(1);
             res = p._parsePricing(e);
             //console.log(res);
