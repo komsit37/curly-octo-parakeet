@@ -1,8 +1,8 @@
-var logger = require('../../lib/logger');
-var bnb = require('../../lib/bnb');
+var logger = require('../lib/logger');
+var bnb = require('../lib/bnb');
 
-var client = require('../../lib/elasticsearch');
-var E = require('../../lib/elastic-bnb');
+var client = require('../lib/elasticsearch');
+var E = require('../lib/elastic-bnb');
 var Promise = require('bluebird');
 
 /*
@@ -16,12 +16,6 @@ var MAX_ERROR_QUIT = 3;
 client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: 'Tokyo'}).then(function (response) {
     processIds(response._source.ids);
 });
-
-function extractNewIds(response) {
-    return response.docs
-        .filter(function (doc) {return !doc.found})
-        .map(function (doc) {return doc._id})
-}
 
 //synchronous execution - since we want to avoid getting banned, seems more complicated than it should be,  why am i using node here???
 function processIds(ids) {
@@ -83,6 +77,14 @@ function processNewId(newId, i) {
 }
 
 
+//helper
+function extractNewIds(response) {
+    return response.docs
+        .filter(function (doc) {return !doc.found})
+        .map(function (doc) {return doc._id})
+}
+
+//progress report
 var queue = {
     start: new Date(),
     type: E.TYPE.ROOM + '-' + E.TYPE.CALENDAR,
@@ -150,10 +152,6 @@ function logProgress(i, id, status, msg) {
             break;
     }
     client.index({index: E.INDEX, type: E.TYPE.QUEUE, body: {timestamp: new Date(), queue: queue}});
-
-    //if (queue.queued ==ª= 0) {
-    //    logResult('completed');
-    //}
 }
 
 function logResult(result) {

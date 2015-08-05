@@ -1,41 +1,31 @@
 var u = require('underscore');
-var logger = require('../../lib/logger');
-var bnb = require('../../lib/bnb');
+var logger = require('../lib/logger');
+var bnb = require('../lib/bnb');
 
-var client = require('../../lib/elasticsearch');
-var E = require('../../lib/elastic-bnb');
+var client = require('../lib/elasticsearch');
+var E = require('../lib/elastic-bnb');
 
 var Promise = require('bluebird');
 
-var USE_FILE_INPUT = false;
-if (USE_FILE_INPUT) {
-    var fs = require('fs');
-    var json = JSON.parse(fs.readFileSync('../../test/search/sample_result.json', 'utf8'));
-    process(json);
-} else {
-    var keywords = [];
-    keywords.push('Tokyo--Japan');
-    keywords.push('Tokyo-Station--Tokyo--Japan');
-    keywords.push('Shinjuku-Station--Tokyo--Japan');
-    keywords.push('Ginza-Station--Tokyo--Japan');
-    keywords.push('Tsukiji-Station--Tokyo--Japan');
-    keywords.push('Shibuya-Station--Tokyo--Japan');
-    keywords.push('Roppongi-Station--Tokyo--Japan');
-    keywords.push('Asakusa-Station--Tokyo--Japan');
-    keywords.push('Ikebukuro-Station--Tokyo--Japan');
-    keywords.push('Shinagawa-Station--Tokyo--Japan');
+var keywords = [];
+keywords.push('Tokyo--Japan');
+keywords.push('Tokyo-Station--Tokyo--Japan');
+keywords.push('Shinjuku-Station--Tokyo--Japan');
+keywords.push('Ginza-Station--Tokyo--Japan');
+keywords.push('Tsukiji-Station--Tokyo--Japan');
+keywords.push('Shibuya-Station--Tokyo--Japan');
+keywords.push('Roppongi-Station--Tokyo--Japan');
+keywords.push('Asakusa-Station--Tokyo--Japan');
+keywords.push('Ikebukuro-Station--Tokyo--Japan');
+keywords.push('Shinagawa-Station--Tokyo--Japan');
 
-    //to execute promise search in sequential
-    keywords.reduce(function (cur, next) {
-        return cur.then(function () {
-            return bnb.searchAll(next).then(process);
-        });
-    }, Promise.resolve());
+//to execute promise search in sequential
+keywords.reduce(function (cur, next) {
+    return cur.then(function () {
+        return bnb.searchAll(next).then(process);
+    });
+}, Promise.resolve());
 
-    //bnb.searchAll('Tokyo--Japan').then(function (result) {
-    //    process(result);
-    //});
-}
 
 function process(result) {
     if (result instanceof Array) {
