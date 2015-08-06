@@ -15,7 +15,7 @@ npm test
 ```
 
 ###Requires
-**lib/secret.js**
+**secret.js**
 ```javascript
 module.exports.ELASTICSEARCH_HOST = 'http://user:pass@eee.com';
 ```
