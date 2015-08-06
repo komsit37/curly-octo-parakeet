@@ -1,8 +1,0 @@
-###bnb-lib
-get data from airbnb
-
-there is rate limit built-in separately within each api call
-
-TODO:
-* it's my first javascript project. need a huge refactor. this is a mess in mix of promise and callback.
-* configurable rate limit
