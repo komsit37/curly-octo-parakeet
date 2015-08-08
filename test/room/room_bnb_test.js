@@ -4,7 +4,7 @@ var room = require('../../lib/room');
 
 describe('Room:bnb', function () {
     it('flat ok', function (done) {
-        room.getRoom('3266217')//this room id does not exist, returning search page
+        room.getRoom('3266217')
             .then(function (json) {
                 should.exist(json);
                 //console.log(json);
@@ -14,7 +14,7 @@ describe('Room:bnb', function () {
     });
 
     it('flat if structurize is false', function (done) {
-        room.getRoom('3266217', {structurize: false})//this room id does not exist, returning search page
+        room.getRoom('3266217', {structurize: false})
             .then(function (json) {
                 should.exist(json);
                 should.exist(json.region);
@@ -23,7 +23,7 @@ describe('Room:bnb', function () {
     });
 
     it('structurize ok', function (done) {
-        room.getRoom('3266217', {structurize: true})//this room id does not exist, returning search page
+        room.getRoom('3266217', {structurize: true})
             .then(function (json) {
                 should.exist(json);
                 //console.log(json);

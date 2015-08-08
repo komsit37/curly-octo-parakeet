@@ -1,4 +1,5 @@
 #curly-octo-parakeet
+https://travis-ci.org/komsit37/curly-octo-parakeet.svg?branch=master
 
 ###Feature
 there is rate limit built-in separately within each api call
