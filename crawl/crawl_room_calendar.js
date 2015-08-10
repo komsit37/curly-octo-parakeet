@@ -12,8 +12,12 @@ var RETRY_SLEEP = 60000;
 var MAX_RETRY = 3;
 var MAX_ERROR_QUIT = 3;
 
+var KEYWORD = 'Tokyo';
+logger.info('Indexing room-calendar to ', E.INDEX);
+logger.info('Keywords:', KEYWORD);
+
 //client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: 'Shinjuku-Station--Tokyo--Japan-2'}).then(function (response) {
-client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: 'Tokyo'}).then(function (response) {
+client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: KEYWORD}).then(function (response) {
     processIds(response._source.ids);
 });
 

@@ -19,6 +19,9 @@ keywords.push('Asakusa-Station--Tokyo--Japan');
 keywords.push('Ikebukuro-Station--Tokyo--Japan');
 keywords.push('Shinagawa-Station--Tokyo--Japan');
 
+logger.info('Indexing bnb-search to ', E.INDEX);
+logger.info('Keywords:', keywords);
+
 //to execute promise search in sequential
 keywords.reduce(function (cur, next) {
     return cur.then(function () {
@@ -77,7 +80,7 @@ function index_combined_search(result) {
     var type = E.TYPE.SEARCH;
     var combinedTerm = getSecondLastItemFromSearchTerm(result.term);
     var body;
-
+    //todo: now i realized, this needs to be sequentialize as well (or combined and do just one call), else update will replace each other
     //need to check if exist first or elasticsearch will error if update is called without existing document
     client.exists({index: E.INDEX, type: type, id: combinedTerm}).then(function (exists) {
         if (exists === true) {
