@@ -7,6 +7,7 @@ var E = require('../lib/elastic-bnb');
 
 var Promise = require('bluebird');
 
+var keywordGroup = 'Tokyo';
 var keywords = [];
 keywords.push('Tokyo--Japan');
 keywords.push('Tokyo-Station--Tokyo--Japan');
@@ -33,19 +34,23 @@ keywords.reduce(function (cur, next) {
 function process(result) {
     if (result instanceof Array) {
         result.forEach(_process);
+        index_combined_search();
     } else {
         _process(result);
     }
 }
 
+var combined_ids = {};
 function _process(result) {
+    //result.ids, result.ranking, result.ids_length
     //logger.info(result);
     //console.log(JSON.stringify(result));
 
     index_ranking(result);
     index_search(result);
-    index_combined_search(result);
+    result.ids.forEach(function(x){combined_ids[x] = true});    //combined ids for index combined result later
 }
+
 
 function index_ranking(result) {
     var type = E.TYPE.RANKING;
@@ -76,46 +81,45 @@ function index_search(result) {
     client.index({index: E.INDEX, type: E.TYPE.SEARCH, id: search_id, body: result}, logger.debug);
 }
 
-function index_combined_search(result) {
+function index_combined_search() {
     var type = E.TYPE.SEARCH;
-    var combinedTerm = getSecondLastItemFromSearchTerm(result.term);
+    var ids = u.keys(combined_ids);
     var body;
-    //todo: now i realized, this needs to be sequentialize as well (or combined and do just one call), else update will replace each other
     //need to check if exist first or elasticsearch will error if update is called without existing document
-    client.exists({index: E.INDEX, type: type, id: combinedTerm}).then(function (exists) {
+    client.exists({index: E.INDEX, type: type, id: keywordGroup}).then(function (exists) {
         if (exists === true) {
             //update existing doc
-            client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: combinedTerm}).then(function (response) {
-                var combined_ids = response._source.ids;
-                result.ids.forEach(function (item) {
-                    if (combined_ids.indexOf(item) < 0) {
-                        combined_ids.push(item);  //only add if not exist
+            client.get({index: E.INDEX, type: E.TYPE.SEARCH, id: keywordGroup}).then(function (response) {
+                var existing_ids = response._source.ids;
+                ids.forEach(function (item) {
+                    if (existing_ids.indexOf(item) < 0) {
+                        existing_ids.push(item);  //only add if not exist
                     }
                 });
                 body = {
-                    timestamp: result.timestamp,
-                    ids: combined_ids,
-                    ids_length: combined_ids.length
+                    timestamp: new Date(),
+                    ids: existing_ids,
+                    ids_length: existing_ids.length
                 };
-                client.update({index: E.INDEX, type: type, id: combinedTerm, body: {doc: body}}, logger.debug);
+                client.update({index: E.INDEX, type: type, id: keywordGroup, body: {doc: body}}, logger.debug);
             });
 
         } else {
             //create new doc
             body = {
-                timestamp: result.timestamp,
-                id: combinedTerm,
-                term: combinedTerm,
+                timestamp: new Date(),
+                id: keywordGroup,
+                term: keywordGroup,
                 guests: 0,
-                ids: result.ids,
-                ids_length: result.ids.length
+                ids: ids,
+                ids_length: ids.length
             };
-            client.index({index: E.INDEX, type: type, id: combinedTerm, body: body}, logger.debug);
+            client.index({index: E.INDEX, type: type, id: keywordGroup, body: body}, logger.debug);
         }
     });
 }
 
-function getSecondLastItemFromSearchTerm(terms) {
-    var ss = terms.split('--');
-    return ss[Math.max(ss.length - 2, 0)]; //get second from last
-}
+//function getSecondLastItemFromSearchTerm(terms) {
+//    var ss = terms.split('--');
+//    return ss[Math.max(ss.length - 2, 0)]; //get second from last
+//}
