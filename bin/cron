@@ -1,0 +1,3 @@
+0 15     * * *     /usr/bin/node /apps/bnb-lib/crawl/room_check.js
+1 15     * * *     /usr/bin/node /apps/bnb-lib/crawl/crawl_search.js
+0 16     * * *     /usr/bin/node /apps/bnb-lib/crawl/crawl_room_calendar.js
