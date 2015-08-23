@@ -15,6 +15,7 @@ keywords.push('Shinjuku-Station--Tokyo--Japan');
 keywords.push('Ginza-Station--Tokyo--Japan');
 keywords.push('Tsukiji-Station--Tokyo--Japan');
 keywords.push('Shibuya-Station--Tokyo--Japan');
+keywords.push('Harajuku-Station--Tokyo--Japan');
 keywords.push('Roppongi-Station--Tokyo--Japan');
 keywords.push('Asakusa-Station--Tokyo--Japan');
 keywords.push('Ikebukuro-Station--Tokyo--Japan');
