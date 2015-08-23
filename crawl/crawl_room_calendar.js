@@ -130,7 +130,7 @@ function logProgress(i, id, status, msg) {
         logger.info(d);
 
     d.timestamp = new Date();   //elasticsearch need timestamp
-    client.index({index: E.INDEX, type: E.TYPE.STATUS, id: d.id, body: d});
+    client.index({index: E.INDEX_STATUS, type: E.TYPE.STATUS, id: d.id, body: d});
 
     //update queue
     switch (d.status) {
@@ -155,7 +155,7 @@ function logProgress(i, id, status, msg) {
             queue.current.error = Math.max(0, queue.current.error-1);   //remove consecutive error for retry case, because it's from the same id
             break;
     }
-    client.index({index: E.INDEX, type: E.TYPE.QUEUE, body: {timestamp: new Date(), queue: queue}});
+    client.index({index: E.INDEX_STATUS, type: E.TYPE.QUEUE, body: {timestamp: new Date(), queue: queue}});
 }
 
 function logResult(result) {
@@ -167,7 +167,7 @@ function logResult(result) {
         logger.info('result', queue);
 
         return client.index({
-            index: E.INDEX,
+            index: E.INDEX_STATUS,
             type: E.TYPE.QUEUE + '-final',
             body: {timestamp: new Date(), queue: queue}
         });
