@@ -55,8 +55,8 @@ function processNewId(newId, i) {
         logProgress(i, newId, E.STATUS.COMPLETED, '');
 
         //put into elasticsearch here
-        client.index({index: E.INDEX, type: E.TYPE.ROOM, newId: newId, body: room.value()});
-        client.index({index: E.INDEX, type: E.TYPE.CALENDAR, newId: newId, body: calendar.value()});
+        client.index({index: E.INDEX, type: E.TYPE.ROOM, id: newId, body: room.value()});
+        client.index({index: E.INDEX, type: E.TYPE.CALENDAR, id: newId, body: calendar.value()});
     }).catch(function (err) {
         logProgress(i, newId, E.STATUS.ERROR, err.message);
 
