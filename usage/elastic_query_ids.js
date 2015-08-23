@@ -2,10 +2,10 @@ var logger = require('../lib/logger');
 var bnb = require('./../lib/bnb');
 var request = require('request-promise');
 var elasticsearch = require('elasticsearch');
-
+var CONFIG = require('config');
 
 var elastic = new elasticsearch.Client({
-    host: 'http://gabviz:gabviz@elastic.ypricing.com',
+    host: CONFIG.ELASTICSEARCH_HOST,
     log: 'debug'
 });
 

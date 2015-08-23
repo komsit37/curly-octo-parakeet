@@ -21,3 +21,4 @@ npm test
 ```javascript
 module.exports.ELASTICSEARCH_HOST = 'http://user:pass@eee.com';
 ```
+config/default.json

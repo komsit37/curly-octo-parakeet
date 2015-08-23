@@ -9,6 +9,7 @@ room.getRoom('3266217', {structurize: true}) //ok
     .then(function (json) {
         logger.debug('callback', json);
         console.log(JSON.stringify(json));
+        console.log(json);
     })
     .catch(function (error) {
         logger.error(error.stack);
