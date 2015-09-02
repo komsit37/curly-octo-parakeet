@@ -7,6 +7,10 @@ var E = require('../lib/elastic-bnb');
 
 var Promise = require('bluebird');
 
+var CONFIG = require('config');
+var BatchReporterEs = require('batch-reporter-es').BatchReporterEs;
+var batch = new BatchReporterEs(CONFIG.ELASTICSEARCH_HOST, E.INDEX_STATUS, E.TYPE.SEARCH);
+
 var keywordGroup = 'Tokyo';
 var keywords = [];
 keywords.push('Tokyo--Japan');
@@ -23,12 +27,23 @@ keywords.push('Shinagawa-Station--Tokyo--Japan');
 
 logger.info('Indexing bnb-search to ', E.INDEX);
 logger.info('Keywords:', keywords);
+u.each(keywords, function(k){batch.queued(k)});
+
+function handleError(err){
+    logger.error(err);
+    batch.error('', err.message);
+}
+
+function handleSuccess(res){
+    logger.debug(res);
+}
 
 //to execute promise search in sequential
 keywords.reduce(function (cur, next) {
     return cur.then(function () {
+        batch.processing(next);
         return bnb.searchAll(next).then(process);
-    });
+    }).catch(handleError);
 }, Promise.resolve());
 
 
@@ -47,12 +62,12 @@ function _process(result) {
     //logger.info(result);
     //console.log(JSON.stringify(result));
 
-    index_ranking(result);
+    //index_ranking(result);
     index_search(result);
     result.ids.forEach(function(x){combined_ids[x] = true});    //combined ids for index combined result later
 }
 
-
+//disable - es doesn't work well with simultaneous update from search results
 function index_ranking(result) {
     var type = E.TYPE.RANKING;
     //index ranking in a separate document
@@ -67,19 +82,20 @@ function index_ranking(result) {
         client.exists({index: E.INDEX, type: type, id: id}).then(function (exists) {
             if (exists === true) {
                 //update existing doc
-                client.update({index: E.INDEX, type: type, id: id, body: {doc: body}}, logger.debug);
+                client.update({index: E.INDEX, type: type, id: id, body: {doc: body}}).then(handleSuccess).catch(handleError);
             } else {
                 //create new doc
-                client.index({index: E.INDEX, type: type, id: id, body: body}, logger.debug);
+                client.index({index: E.INDEX, type: type, id: id, body: body}).then(handleSuccess).catch(handleError);
             }
-        });
+        }).catch(handleError);
     });
 }
 
 function index_search(result) {
     delete result.ranking;
+    batch.completed(result.term);
     var search_id = result.term + '-' + result.guests;
-    client.index({index: E.INDEX, type: E.TYPE.SEARCH, id: search_id, body: result}, logger.debug);
+    client.index({index: E.INDEX, type: E.TYPE.SEARCH, id: search_id, body: result}).then(handleSuccess).catch(handleError);
 }
 
 function index_combined_search() {
@@ -102,7 +118,7 @@ function index_combined_search() {
                     ids: existing_ids,
                     ids_length: existing_ids.length
                 };
-                client.update({index: E.INDEX, type: type, id: keywordGroup, body: {doc: body}}, logger.debug);
+                client.update({index: E.INDEX, type: type, id: keywordGroup, body: {doc: body}}).then(handleSuccess).catch(handleError);
             });
 
         } else {
@@ -115,7 +131,7 @@ function index_combined_search() {
                 ids: ids,
                 ids_length: ids.length
             };
-            client.index({index: E.INDEX, type: type, id: keywordGroup, body: body}, logger.debug);
+            client.index({index: E.INDEX, type: type, id: keywordGroup, body: body}).then(handleSuccess).catch(handleError);
         }
     });
 }

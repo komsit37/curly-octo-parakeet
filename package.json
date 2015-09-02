@@ -7,6 +7,7 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
+    "batch-reporter-es": "^0.1.2",
     "bluebird": "^2.9.33",
     "cheerio": "^0.19.0",
     "config": "^1.15.0",
