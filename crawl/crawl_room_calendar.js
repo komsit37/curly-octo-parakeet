@@ -1,13 +1,30 @@
 var logger = require('../lib/logger');
 var bnb = require('../lib/bnb');
+var CONFIG = require('config');
+var elasticsearch = require('elasticsearch');
 
-var client = require('../lib/elasticsearch');
 var E = require('../lib/elastic-bnb');
 var Promise = require('bluebird');
 
-var CONFIG = require('config');
+
 var BatchReporterEs = require('batch-reporter-es').BatchReporterEs;
 var batch = new BatchReporterEs(CONFIG.ELASTICSEARCH_HOST, E.INDEX_STATUS, 'room-calendar');
+
+var client = new elasticsearch.Client({
+    host: CONFIG.ELASTICSEARCH_HOST,
+    log: CONFIG.ELASTICSEARCH_LOG,
+    requestTimeout: 60000
+});
+
+function handleError(err){
+    logger.error(err);
+    batch.error('', err.message);
+}
+
+function handleSuccess(res){
+    logger.debug(res);
+}
+
 /*
 completely synchronous craw ... why am i using node??? this should be very simple using python
  */
@@ -58,13 +75,13 @@ function processNewId(newId, i) {
         batch.completed(newId);
 
         //put into elasticsearch here
-        client.index({index: E.INDEX, type: E.TYPE.ROOM, id: newId, body: room.value()});
-        client.index({index: E.INDEX, type: E.TYPE.CALENDAR, id: newId, body: calendar.value()});
+        client.index({index: E.INDEX, type: E.TYPE.ROOM, id: newId, body: room.value()}).then(handleSuccess).catch(handleError);;
+        client.index({index: E.INDEX, type: E.TYPE.CALENDAR, id: newId, body: calendar.value()}).then(handleSuccess).catch(handleError);;
     }).catch(function (err) {
         batch.error(newId, err.message);
 
-        logger.debug('queue error count', queue.current.error);
-        if (queue.current.error > MAX_ERROR_QUIT) {
+        logger.debug('queue error count', batch.getQueueStatus().current.error);
+        if (batch.getQueueStatus().current.error > MAX_ERROR_QUIT) {
             logger.error('too many consecutive errors. our ip may got banned. exiting...');
             batch.fail().then(process.exit(1));
         } else{
