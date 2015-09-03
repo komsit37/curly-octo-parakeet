@@ -8,7 +8,7 @@ var Promise = require('bluebird');
 
 
 var BatchReporterEs = require('batch-reporter-es').BatchReporterEs;
-var batch = new BatchReporterEs(CONFIG.ELASTICSEARCH_HOST, E.INDEX_STATUS, 'room-calendar');
+var batch = new BatchReporterEs(CONFIG.ELASTICSEARCH_HOST, E.INDEX_STATUS, 'room-calendar', 'info', 60000);
 
 var client = new elasticsearch.Client({
     host: CONFIG.ELASTICSEARCH_HOST,
@@ -79,22 +79,30 @@ function processNewId(newId, i) {
         client.index({index: E.INDEX, type: E.TYPE.CALENDAR, id: newId, body: calendar.value()}).then(handleSuccess).catch(handleError);;
     }).catch(function (err) {
         batch.error(newId, err.message);
-
-        logger.debug('queue error count', batch.getQueueStatus().current.error);
-        if (batch.getQueueStatus().current.error > MAX_ERROR_QUIT) {
+        var msg = err.message;
+        logger.debug('queue error count', batch.getQueueStatus().current.consecutive_error);
+        if (batch.getQueueStatus().current.consecutive_error > MAX_ERROR_QUIT) {
             logger.error('too many consecutive errors. our ip may got banned. exiting...');
             batch.fail().then(process.exit(1));
         } else{
-            if (batch.getStatus()[newId].retry < MAX_RETRY) {
+            //if room is not listed, we will get error, ignore it
+
+            if(err.message && err.message.indexOf('is not listed') > 0){
+                logger.warn(i, newId, 'skipping ' + newId + ' because it no longer exists');
+                return;
+            }
+
+            if (batch.getStatus(newId).retry < MAX_RETRY) {
                 batch.retrying(newId);
 
                 //return promise so that this will be called in the chain
                 return Promise.delay(RETRY_SLEEP).then(function () {
-                    logger.debug(i, newId, 'retrying', batch.getStatus()[newId].retry, 'times');
+                    logger.debug(i, newId, 'retrying', batch.getStatus(newId).retry, 'times');
                     return processNewId(newId, i);
                 });
             } else{
                 logger.warn(i, newId, 'exceed retry limits, giving up on this id');
+                return;
             }
         }
     })
