@@ -85,12 +85,12 @@ function processNewId(newId, i) {
             logger.error('too many consecutive errors. our ip may got banned. exiting...');
             batch.fail().then(process.exit(1));
         } else{
-            if (statusInfo[newId].retry < MAX_RETRY) {
+            if (batch.getStatus()[newId].retry < MAX_RETRY) {
                 batch.retrying(newId);
 
                 //return promise so that this will be called in the chain
                 return Promise.delay(RETRY_SLEEP).then(function () {
-                    logger.debug(i, newId, 'retrying', statusInfo[newId].retry, 'times');
+                    logger.debug(i, newId, 'retrying', batch.getStatus()[newId].retry, 'times');
                     return processNewId(newId, i);
                 });
             } else{
