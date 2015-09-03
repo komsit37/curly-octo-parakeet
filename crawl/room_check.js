@@ -3,7 +3,7 @@ var room = require('./../lib/room');
 var logger = require('./../lib/logger');
 var should = require('../test/test-lib/chai-should');
 var nodemailer = require('nodemailer');
-var secret = require('../secret');
+var CONFIG = require('config');
 
 //send email if any error is found
 
@@ -15,11 +15,18 @@ room.getRoom(id, {structurize: true}) //ok
         //console.log(JSON.stringify(room));
         try {
             logger.info('checking id ' + id +'...');
+            logger.info(room);
             room.id.should.equals(id);
             room.name.should.equals('Prime 1BR Terrace @Harajuku');
 
-            room.host.response.rate.should.be.closeTo(90, 10);  room.host.response.rate = 0;
-            room.host.should.be.like({"id":"16320275","name":"Kan Gab Bob","response":{"rate":0,"time":"within an hour"}});
+            var host = room.host;
+            //host.should.equals({"id":"16320275","name":"Kan Gab Bob","response":{"rate":0,"time":"within an hour"}});
+            host.should.have.property('id', '16320275');
+            host.should.have.property('name', 'Kan Gab Bob');
+            host.should.have.property('response');
+            host.response.rate.should.be.closeTo(90, 10);
+            //["within an hour", 'within a few hour'].indexOf(host.response.time).should.be.above(0);
+            host.response.time.should.match(/\bwithin an hour\b|\bwithin a few hours\b/);
 
             room.prop.img.should.have.string('https://a1.muscache.com');    room.prop.img = 'dummy';
             room.prop.should.be.like({"type":"Apartment","scope":"entireplace","accommodates":5,"bedrooms":1,"bathrooms":1,"img":"dummy"});
@@ -53,32 +60,37 @@ room.getRoom(id, {structurize: true}) //ok
             logger.error('error:', err);
             logger.error('full json:', room);
 
-            logger.info('sending error email...');
-
-            // create reusable transporter object using SMTP transport
-            var transporter = nodemailer.createTransport({
-                service: 'Gmail',
-                auth: secret.EMAIL
-            });
-
-            var mailOptions = {
-                from: secret.EMAIL.user,
-                to: secret.EMAIL.user, // list of receivers
-                subject: 'Bnb Room Check error', // Subject line
-                html: '<b>Error:</b><br>' + err + '<br><br><b>Full room json:</b></b></b><pre><code>' + JSON.stringify(room, null, 4) + '</code></pre>' // html body
-            };
-
-            transporter.sendMail(mailOptions, function(error, info){
-                if(error){
-                    return console.log(error);
-                }
-                console.log('Message sent: ' + info.response);
-
-            });
-            throw(err);
+            if (CONFIG.ENV != 'DEV') {
+                logger.info('sending error email...');
+                sendEmail(err, room);
+            } {
+                logger.info('skip sending error email for DEV environment...');
+            }
         }
     });
 
+function sendEmail(err, room){
+
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: CONFIG.EMAIL
+    });
+
+    var mailOptions = {
+        from: CONFIG.EMAIL.user,
+        to: CONFIG.EMAIL.user, // list of receivers
+        subject: 'Bnb Room Check error', // Subject line
+        html: '<b>Error:</b><br>' + err + '<br><br><b>Full room json:</b></b></b><pre><code>' + JSON.stringify(room, null, 4) + '</code></pre>' // html body
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+
+    });
+}
 //room.getRoom('3266217',
 //    function(error, result){
 //        logger.debug('promise', result)
